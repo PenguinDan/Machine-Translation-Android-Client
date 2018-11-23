@@ -25,11 +25,11 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
     private RelativeLayout toolbar;
     private ImageButton backButton;
     private Button createAccountButton;
-    private TextView titleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_authentication);
 
         // Initialize all of the fragments
         loginFragment = new LoginFragment();
@@ -41,7 +41,6 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
         toolbar = (RelativeLayout) findViewById(R.id.toolbar);
         backButton = (ImageButton) findViewById(R.id.back_button);
         createAccountButton = (Button) findViewById(R.id.create_account_button);
-        titleTextView = (TextView) findViewById(R.id.start_up_title_text_view);
 
         // Automatically start the Login Fragment
         beginFragment(AuthFragmentType.LOGIN, true, false);
@@ -72,7 +71,6 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
             case CREATE_ACCOUNT:
                 toolbar.setVisibility(View.VISIBLE);
                 createAccountButton.setVisibility(View.VISIBLE);
-                titleTextView.setText(R.string.create_account);
                 fragmentTransaction.replace(R.id.main_display_container, createAccountFragment);
                 break;
         }
