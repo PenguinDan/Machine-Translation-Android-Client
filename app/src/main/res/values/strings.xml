@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MeetKai-Test</string>
+
+    <!-- Authentication Strings -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="empty_login_entry">Login inputs cannot be empty</string>
+    <string name="confirm_password_not_match">Passwords do not match</string>
+    <string name="weak_password">Password is too weak</string>
+
+    <!-- Main Activity Strings -->
+    <string name="settings">Settings</string>
+    <string name="translate">Translate</string>
+    <string name="monitor">Monitor</string>
+</resources>
