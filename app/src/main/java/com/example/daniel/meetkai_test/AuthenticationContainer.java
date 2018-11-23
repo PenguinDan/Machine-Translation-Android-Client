@@ -16,7 +16,8 @@ import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
 
 import org.w3c.dom.Text;
 
-public class AuthenticationContainer extends AppCompatActivity implements OnChangeFragmentListener {
+public class AuthenticationContainer extends AppCompatActivity implements OnChangeFragmentListener,
+    View.OnClickListener{
 
     // Fragments associated with this container
     private LoginFragment loginFragment;
@@ -36,10 +37,30 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
         loginFragment.setOnChangeFragmentListener(this);
         createAccountFragment = new CreateAccountFragment();
         createAccountFragment.setOnChangeFragmentListener(this);
+        createAccountFragment.setCreateAccountFragmentListener(new CreateAccountFragment.CreateAccountFragmentListener() {
+            /**
+             * check if create button is enabled
+             * @param enable - boolean variable to verify button is enabled
+             */
+            @Override
+            public void onEnableCreateAccountButton(boolean enable) {
+                //Enable create account button and change it color
+                if(enable){
+                    createAccountButton.setEnabled(true);
+                    createAccountButton.setTextColor(getColor(R.color.black));
+                }
+                //Disable create account button and change its color
+                else{
+                    createAccountButton.setEnabled(false);
+                    createAccountButton.setTextColor(getColor(R.color.createAccount));
+                }
+            }
+        });
 
         // Initialize the views
         toolbar = (RelativeLayout) findViewById(R.id.toolbar);
         backButton = (ImageButton) findViewById(R.id.back_button);
+        backButton.setOnClickListener(this);
         createAccountButton = (Button) findViewById(R.id.create_account_button);
 
         // Automatically start the Login Fragment
@@ -80,4 +101,18 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
         fragmentTransaction.commit();
     }
 
+    /**
+     * Event handler for the buttons in the StartUpContainer object
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.back_button:
+                //Remove the current view of back stack
+                getFragmentManager().popBackStackImmediate();
+                toolbar.setVisibility(View.GONE);
+                break;
+        }
+    }
 }
