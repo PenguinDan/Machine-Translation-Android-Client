@@ -62,6 +62,7 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
         backButton = (ImageButton) findViewById(R.id.back_button);
         backButton.setOnClickListener(this);
         createAccountButton = (Button) findViewById(R.id.create_account_button);
+        createAccountButton.setOnClickListener(this);
 
         // Automatically start the Login Fragment
         beginFragment(AuthFragmentType.LOGIN, true, false);

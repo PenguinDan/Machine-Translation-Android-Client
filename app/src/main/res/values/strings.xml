@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">MeetKai-Test</string>
 
+    <!-- Server Strings -->
+    <string name="client_id">6e743a22-4943-48c1-bb51-4258761ef67a</string>
+    <string name="base_url">https://www.penguindan-test.gq</string>
+
     <!-- Authentication Strings -->
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -10,6 +14,7 @@
     <string name="empty_login_entry">Login inputs cannot be empty</string>
     <string name="confirm_password_not_match">Passwords do not match</string>
     <string name="weak_password">Password is too weak</string>
+    <string name="application_secret">Admin Secret</string>
 
     <!-- Main Activity Strings -->
     <string name="settings">Settings</string>

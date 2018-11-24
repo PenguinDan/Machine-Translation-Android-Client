@@ -24,8 +24,8 @@ interface HTTPInterface {
     @GET("user")
     fun loginUser(
             @Header("clientId") clientId: String,
-            @Header("password") password : String,
-            @Header("username") username : String
+            @Header("username") username : String,
+            @Header("password") password : String
     ) : retrofit2.Call<AuthenticationResponse>
 
     /**

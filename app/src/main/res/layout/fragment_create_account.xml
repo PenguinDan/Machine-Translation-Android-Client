@@ -97,5 +97,22 @@
         android:layout_marginLeft="10dp"
         android:text="@string/confirm_password_not_match"/>
 
+    <TextView
+        android:id="@+id/admin_secret_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:text="@string/application_secret"/>
 
+    <EditText
+        android:id="@+id/admin_secret_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:paddingStart="10dp"
+        android:inputType="textPassword|textNoSuggestions"
+        android:saveEnabled="false"
+        android:background="@drawable/rounded_background"/>
 </LinearLayout>
