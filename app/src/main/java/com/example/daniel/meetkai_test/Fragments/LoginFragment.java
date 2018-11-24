@@ -11,7 +11,15 @@ import android.widget.TextView;
 
 import com.example.daniel.meetkai_test.AuthenticationContainer;
 import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
+import com.example.daniel.meetkai_test.MeetKai.AuthenticationResponse;
+import com.example.daniel.meetkai_test.MeetKai.Request;
 import com.example.daniel.meetkai_test.R;
+import com.example.daniel.meetkai_test.Utilities.ApplicationUtilities;
+import com.example.daniel.meetkai_test.Utilities.UserUtilities;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
 
@@ -46,6 +54,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         //Set listeners for buttons
         signInButton.setOnClickListener(this);
         signUpButton.setOnClickListener(this);
+
+        // Debug
+        usernameEditText.setText("DanDan");
+        passwordEditText.setText("118Ma7ur3!!");
+
         // Inflate the layout for this fragment
         return view;
     }
@@ -64,13 +77,42 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     errorMessageTextView.setText(R.string.empty_login_entry);
                 }
                 else{
-
+                    loginUser(username, password);
                 }
                 break;
             case R.id.sign_up_button: //user selects sign up
                 onChangeFragmentListener.onChangeFragment(AuthenticationContainer.AuthFragmentType.CREATE_ACCOUNT);
                 break;
         }
+    }
+
+    /**
+     * Sends arequest to log the user in
+     * @param username The user's username
+     * @param password The user's password
+     */
+    private void loginUser(String username, String password) {
+        // Begin the request
+        Request request = new Request(getActivity());
+        Call<AuthenticationResponse> loginRequest = request.loginUser(username, password);
+        loginRequest.enqueue(new Callback<AuthenticationResponse>() {
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                switch(response.code()) {
+                    case Request.ACCEPTED: {
+                        // Cache the user information
+                        UserUtilities.cacheUser(getActivity(), response.body());
+                    }
+                    break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                ApplicationUtilities.displayToast(getActivity(), "Server Error");
+                t.printStackTrace();
+            }
+        });
     }
 
     /**

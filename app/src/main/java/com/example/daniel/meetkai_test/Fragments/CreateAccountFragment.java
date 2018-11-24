@@ -74,9 +74,10 @@ public class CreateAccountFragment extends Fragment {
         confirmPasswordErrorTextView = (TextView) view.findViewById(R.id.confirm_password_error);
 
         // Debug
-        usernameEditText.setText("DanDan");
-        passwordEditText.setText("118Ma7ur3!!");
-        confirmPasswordEditText.setText("118Ma7ur3!!");
+//        usernameEditText.setText("DanDan");
+//        passwordEditText.setText("118Ma7ur3!!");
+//        confirmPasswordEditText.setText("118Ma7ur3!!");
+
         // Method that sets all of the OnFocusChanged listeners for the edit texts
         setTextEditFocusListeners();
         setTextChangeListeners();
