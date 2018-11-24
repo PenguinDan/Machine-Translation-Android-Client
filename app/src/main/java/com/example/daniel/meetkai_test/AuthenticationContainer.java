@@ -108,11 +108,16 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.back_button:
+            case R.id.back_button: {
                 //Remove the current view of back stack
                 getFragmentManager().popBackStackImmediate();
                 toolbar.setVisibility(View.GONE);
-                break;
+            }
+            break;
+            case R.id.create_account_button: {
+                createAccountFragment.createAccount();
+            }
+            break;
         }
     }
 }

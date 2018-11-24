@@ -282,4 +282,16 @@ public class CreateAccountFragment extends Fragment {
             createAccountFragmentListener.onEnableCreateAccountButton(false);
         }
     }
+
+
+    /**
+     * Retrieves the user's information and creates and account
+     */
+    public void createAccount(){
+        // Retrieve the information in the edit texts
+        String username = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        // Begin the request to the server
+    }
 }
