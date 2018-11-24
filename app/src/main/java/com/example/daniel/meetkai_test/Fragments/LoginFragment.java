@@ -34,7 +34,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
 
     /***
-     * creates the view object for the login page
+     * Creates the view object for the login page
      * @param inflater
      * @param container
      * @param savedInstanceState
