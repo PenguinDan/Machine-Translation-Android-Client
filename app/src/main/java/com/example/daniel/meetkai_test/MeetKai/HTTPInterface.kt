@@ -75,10 +75,7 @@ interface HTTPInterface {
             @Field("languageAbr") languageAbr : String,
             @Field("isAzureCorrect") isAzureCorrect : Boolean,
             @Field("isGoogleCorrect") isGoogleCorrect : Boolean,
-            @Field("isYandexCorrect") isYandexCorrect : Boolean,
-            @Field("azureTranslation") azureTranslation : String,
-            @Field("googleTranslation") googleTranslation : String,
-            @Field("yandexTranslation") yandexTranslation : String
+            @Field("isYandexCorrect") isYandexCorrect : Boolean
     ) : retrofit2.Call<ResponseBody>
 
     /**

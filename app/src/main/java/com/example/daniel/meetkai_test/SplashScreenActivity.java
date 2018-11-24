@@ -16,7 +16,9 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Check whether the User's information is cached and start the appropriate activity
-        if (UserUtilities.isLoggedIn(this) != null) {
+        // Make sure that the User's refresh token has not expired also
+        if (UserUtilities.isLoggedIn(this) != null &&
+                UserUtilities.getUserRefreshToken(this) != null) {
             startActivity(new Intent(SplashScreenActivity.this, MainActivityContainer.class));
         } else {
             startActivity(new Intent(SplashScreenActivity.this, AuthenticationContainer.class));

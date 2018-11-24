@@ -64,10 +64,12 @@ public class Request {
     }
 
     /**
+     * Creates a retrofit login request
      *
-     * @param username
-     * @param password
-     * @return
+     * @param username The user's username
+     * @param password The user's password
+     *
+     * @return A login request object
      */
     public Call<AuthenticationResponse> loginUser(final String username, final String password) {
         // Create the GET request to login the user
@@ -75,16 +77,91 @@ public class Request {
     }
 
     /**
+     * Creates a retrofit create user request
      *
-     * @param username
-     * @param password
-     * @param appSecret
-     * @return
+     * @param username The user's username
+     * @param password The user's password
+     * @param appSecret The application secret if the user has it for an admin account
+     *
+     * @return A create user account request object
      */
     public Call<AuthenticationResponse> createUser(final String username, final String password, final String appSecret){
         // Create the POST request to create a user
-        return httpInterface.createUser( clientId, username, password, appSecret);
+        return httpInterface.createUser(clientId, username, password, appSecret);
     }
 
+    /**
+     * Creates a retrofit get phrase request
+     *
+     * @param language The language in which the user wants to translate in
+     * @param username The user's username
+     * @param accessToken The user's access token
+     *
+     * @return A get phrase request object
+     */
+    public Call<GetPhraseResponse> getPhrase(final String language, final String username, final String accessToken){
+        // Create the GET request to retrieve a phrase from the server
+        return httpInterface.getPhrase(clientId, language, username, accessToken);
+    }
+
+    /**
+     * Creates a retrofit add phrase request
+     *
+     * @param phrase The phrase that the user wants to add
+     * @param username The user's username
+     * @param accessToken The user's access token
+     *
+     * @return An add phrase request object
+     */
+    public Call<ResponseBody> addPhrase(final String phrase, final String username, final String accessToken) {
+        // Create the POST request to save a phrase in the server
+        return httpInterface.addPhrase(clientId, phrase, username, accessToken);
+    }
+
+    /**
+     * Allows the user to refresh their access token
+     *
+     * @param username The user's username
+     * @param refreshToken The user's refresh token
+     *
+     * @return A renew token request object
+     */
+    public Call<AuthenticationResponse> renewToken(final String username, final String refreshToken) {
+        // Create the PUT request to get a new access token
+        return httpInterface.renewToken(clientId, username, refreshToken);
+    }
+
+
+    /**
+     * Allows the user to retrieve their annotations
+     * Allows an admin to retrieve their or another user's annotations
+     *
+     * @param username The user's username
+     * @param accessToken The user's access token
+     * @param targetUser The target user if the user is an admin
+     *
+     * @return A retrieve user annotations request object
+     */
+    public Call<UserAnnotationsResponse> retrieveUserAnnotations(final String username, final String accessToken,
+                                                      final String targetUser) {
+        // Create the GET request for the user's annotations
+        return httpInterface.retrieveUserAnnotations(clientId, username, accessToken, targetUser);
+    }
+
+    /**
+     * Allows an admin to retrieve source annotations
+     *
+     * @param username The user's username
+     * @param accessToken The user's access token
+     * @param hash The hash of the source item to retrieve the annotations for
+     * @param phrase The phrase of the source item to retrieve the annotations for
+     *
+     * @return The
+     */
+    public Call<SourceAnnotationsResponse> retrieveSourceAnnotations(final String username, final String accessToken,
+                                                                     final String hash, final String phrase) {
+        // Create the GET request to get a source's annotations
+        return httpInterface.retrieveSourceAnnotations(clientId, username, accessToken, hash, phrase);
+    }
 
 }

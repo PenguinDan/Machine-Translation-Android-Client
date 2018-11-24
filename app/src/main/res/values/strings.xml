@@ -26,4 +26,49 @@
     <string name="correct_button">Correct</string>
     <string name="incorrect_button">Incorrect</string>
     <string name="add_source_button">Add Source</string>
+    <string-array name="supported_languages">
+        <item>Afrikaans</item>
+        <item>Arabic</item>
+        <item>Bosnian</item>
+        <item>Bulgarian</item>
+        <item>Catalan</item>
+        <item>Croatian</item>
+        <item>Czech</item>
+        <item>Danish</item>
+        <item>Dutch</item>
+        <item>Estonian</item>
+        <item>Finnish</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Greek</item>
+        <item>Haitian Creole</item>
+        <item>Hindi</item>
+        <item>Hungarian</item>
+        <item>Icelanding</item>
+        <item>Indonesian</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Korean</item>
+        <item>Latvian</item>
+        <item>Lithuanian</item>
+        <item>Malagasy</item>
+        <item>Malay</item>
+        <item>Maltese</item>
+        <item>Norwegian</item>
+        <item>Persian</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Romanian</item>
+        <item>Slovak</item>
+        <item>Slovenian</item>
+        <item>Spanish</item>
+        <item>Swedish</item>
+        <item>Telugu</item>
+        <item>Thai</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
+        <item>Urdu</item>
+        <item>Vietnamese</item>
+        <item>Welsh</item>
+    </string-array>
 </resources>

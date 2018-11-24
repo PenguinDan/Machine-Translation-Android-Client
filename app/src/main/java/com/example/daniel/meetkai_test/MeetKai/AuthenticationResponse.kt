@@ -6,8 +6,10 @@ class AuthenticationResponse(val message : String,
                              val refreshToken: Map<String, String>?,
                              val isAdmin : Boolean?){
     // Class constants
-    val TOKEN = "token"
-    val EXPIRATION = "expiration"
+    companion object {
+        val TOKEN = "token"
+        val EXPIRATION = "expiration"
+    }
 
     /**
      * Returns the access token value
