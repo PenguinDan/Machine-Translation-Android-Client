@@ -16,8 +16,6 @@ import com.example.daniel.meetkai_test.Fragments.LoginFragment;
 import com.example.daniel.meetkai_test.Interfaces.OnChangeActivityListener;
 import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
 
-import org.w3c.dom.Text;
-
 public class AuthenticationContainer extends AppCompatActivity implements OnChangeFragmentListener,
     View.OnClickListener, OnChangeActivityListener {
 

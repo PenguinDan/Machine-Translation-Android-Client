@@ -1,8 +1,6 @@
 package com.example.daniel.meetkai_test.Utilities;
 
 import android.content.Context;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.view.Gravity;
 import android.widget.Toast;
 

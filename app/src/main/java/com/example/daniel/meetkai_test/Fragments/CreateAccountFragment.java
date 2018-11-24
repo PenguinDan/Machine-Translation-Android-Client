@@ -319,6 +319,7 @@ public class CreateAccountFragment extends Fragment {
                     case Request.CREATED:{
                         // Successful user account creation, cache their information
                         UserUtilities.cacheUser(getActivity(), response.body());
+                        onChangeActivityListener.onChangeActivity();
                     }
                     break;
                     case Request.UNAUTHORIZED: {

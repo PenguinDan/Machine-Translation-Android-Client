@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AuthenticationContainer"></activity>
+        <activity android:name=".MainActivityContainer"></activity>
     </application>
 
 </manifest>

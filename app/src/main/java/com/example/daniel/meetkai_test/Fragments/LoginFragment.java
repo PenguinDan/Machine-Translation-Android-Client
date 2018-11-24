@@ -104,6 +104,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     case Request.ACCEPTED: {
                         // Cache the user information
                         UserUtilities.cacheUser(getActivity(), response.body());
+                        onChangeActivityListener.onChangeActivity();
                     }
                     break;
                 }

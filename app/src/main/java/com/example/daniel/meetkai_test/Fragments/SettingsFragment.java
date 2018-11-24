@@ -1,4 +1,7 @@
 package com.example.daniel.meetkai_test.Fragments;
 
-public class SettingsFragment {
+import android.app.Fragment;
+
+public class SettingsFragment extends Fragment {
+
 }
