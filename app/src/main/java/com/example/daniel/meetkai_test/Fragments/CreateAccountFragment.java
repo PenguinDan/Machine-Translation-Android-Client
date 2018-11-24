@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.daniel.meetkai_test.Interfaces.OnChangeActivityListener;
 import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
 import com.example.daniel.meetkai_test.MeetKai.AuthenticationResponse;
 import com.example.daniel.meetkai_test.MeetKai.Request;
@@ -40,7 +41,7 @@ public class CreateAccountFragment extends Fragment {
     private boolean usernameFilled, passwordFilled, confirmedPasswordFilled;
     private final String TAG = CreateAccountFragment.class.getSimpleName();
     // Interfaces for Authentication Container to implement
-    private OnChangeFragmentListener onChangeFragmentListener;
+    private OnChangeActivityListener onChangeActivityListener;
     public interface CreateAccountFragmentListener {
         void onEnableCreateAccountButton(boolean enable);
     }
@@ -88,12 +89,11 @@ public class CreateAccountFragment extends Fragment {
 
 
     /**
-     * Sets the OnChangeFragmentListener to communicate from this fragment to the activity
-     *
-     * @param onChangeFragmentListener The listener for communication
+     * Listener that tells the activity to switch to the main activity
+     * @param onChangeActivityListener The listener that was implemented in the main activity
      */
-    public void setOnChangeFragmentListener(OnChangeFragmentListener onChangeFragmentListener) {
-        this.onChangeFragmentListener = onChangeFragmentListener;
+    public void setOnChangeActivityListener(OnChangeActivityListener onChangeActivityListener) {
+        this.onChangeActivityListener = onChangeActivityListener;
     }
 
     /**

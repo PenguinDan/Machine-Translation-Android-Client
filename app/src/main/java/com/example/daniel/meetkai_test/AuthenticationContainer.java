@@ -1,6 +1,7 @@
 package com.example.daniel.meetkai_test;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,13 @@ import android.widget.TextView;
 
 import com.example.daniel.meetkai_test.Fragments.CreateAccountFragment;
 import com.example.daniel.meetkai_test.Fragments.LoginFragment;
+import com.example.daniel.meetkai_test.Interfaces.OnChangeActivityListener;
 import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
 
 import org.w3c.dom.Text;
 
 public class AuthenticationContainer extends AppCompatActivity implements OnChangeFragmentListener,
-    View.OnClickListener{
+    View.OnClickListener, OnChangeActivityListener {
 
     // Fragments associated with this container
     private LoginFragment loginFragment;
@@ -35,8 +37,9 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
         // Initialize all of the fragments
         loginFragment = new LoginFragment();
         loginFragment.setOnChangeFragmentListener(this);
+        loginFragment.setOnChangeActivityListener(this);
         createAccountFragment = new CreateAccountFragment();
-        createAccountFragment.setOnChangeFragmentListener(this);
+        createAccountFragment.setOnChangeActivityListener(this);
         createAccountFragment.setCreateAccountFragmentListener(new CreateAccountFragment.CreateAccountFragmentListener() {
             /**
              * check if create button is enabled
@@ -120,5 +123,14 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
             }
             break;
         }
+    }
+
+    /**
+     * Begins the main activity
+     */
+    @Override
+    public void onChangeActivity() {
+        startActivity(new Intent(this, MainActivityContainer.class));
+        finish();
     }
 }

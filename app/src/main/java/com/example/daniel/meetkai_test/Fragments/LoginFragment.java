@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.daniel.meetkai_test.AuthenticationContainer;
+import com.example.daniel.meetkai_test.Interfaces.OnChangeActivityListener;
 import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
 import com.example.daniel.meetkai_test.MeetKai.AuthenticationResponse;
 import com.example.daniel.meetkai_test.MeetKai.Request;
@@ -29,6 +30,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     private TextView errorMessageTextView;
     // Interfaces for Authentication Container to implement
     private OnChangeFragmentListener onChangeFragmentListener;
+    private OnChangeActivityListener onChangeActivityListener;
 
 
     /***
@@ -121,5 +123,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
      */
     public void setOnChangeFragmentListener(OnChangeFragmentListener onChangeFragmentListener) {
         this.onChangeFragmentListener = onChangeFragmentListener;
+    }
+
+
+    /**
+     * Listener that tells the activity to switch to the main activity
+     * @param onChangeActivityListener The listener that was implemented in the main activity
+     */
+    public void setOnChangeActivityListener(OnChangeActivityListener onChangeActivityListener) {
+        this.onChangeActivityListener = onChangeActivityListener;
     }
 }
