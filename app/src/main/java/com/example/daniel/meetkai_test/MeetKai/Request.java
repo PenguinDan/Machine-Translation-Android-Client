@@ -197,4 +197,17 @@ public class Request {
         return httpInterface.retrieveSourceHashes(clientId, username, accessToken);
     }
 
+    /**
+     * Allows an admin to ask for monitoring access privilege
+     *
+     * @param username The admin's username
+     * @param accessToken The admin's access token
+     *
+     * @return A request object for the admin
+     */
+    public Call<ResponseBody> getMonitoringAccess(final String username, final String accessToken) {
+        // Create the GET request for getting monitoring access
+        return httpInterface.getMonitoringAccess(clientId, username, accessToken);
+    }
+
 }

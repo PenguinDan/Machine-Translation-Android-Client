@@ -2,7 +2,10 @@ package com.example.daniel.meetkai_test.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +17,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.daniel.meetkai_test.Interfaces.OnRetrieveAccessToken;
+import com.example.daniel.meetkai_test.Interfaces.ResultReceiverCallback;
 import com.example.daniel.meetkai_test.MainActivityContainer;
 import com.example.daniel.meetkai_test.MeetKai.Request;
 import com.example.daniel.meetkai_test.MeetKai.SourceHashResponse;
 import com.example.daniel.meetkai_test.MeetKai.User;
 import com.example.daniel.meetkai_test.R;
+import com.example.daniel.meetkai_test.Services.MonitoringService;
 import com.example.daniel.meetkai_test.Utilities.ApplicationUtilities;
 import com.example.daniel.meetkai_test.Utilities.UserUtilities;
 
@@ -44,6 +49,20 @@ public class MonitorFragment extends Fragment implements View.OnClickListener{
     private Request request;
     private AlertDialog userAnnotationDialog;
     private AlertDialog sourceAnnotationDialog;
+    // Private Classes
+    private class MonitoringResultReceiver extends ResultReceiver{
+        public MonitoringResultReceiver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
+            String annotation = resultData.getString("annotation");
+            setMonitorText(annotation, true);
+            super.onReceiveResult(resultCode, resultData);
+        }
+    }
+    private MonitoringResultReceiver monitoringResultReceiver;
 
     /***
      * Creates the view object for the login page
@@ -62,12 +81,14 @@ public class MonitorFragment extends Fragment implements View.OnClickListener{
         // Initialize Fragment variables
         user = UserUtilities.getUserObject(getActivity());
         request = new Request(getActivity());
+        monitoringResultReceiver = new MonitoringResultReceiver(new Handler());
 
         // Initialize Fragment Views
         monitorTextView = (TextView) view.findViewById(R.id.monitor_fragment_text_view);
         getUserAnnotationsButton = (Button) view.findViewById(R.id.get_user_annotations);
         getUserAnnotationsButton.setOnClickListener(this);
         activeMonitorButton = (Button) view.findViewById(R.id.active_monitor_button);
+        activeMonitorButton.setOnClickListener(this);
         getSourceAnnotationsButton = (Button) view.findViewById(R.id.get_source_annotations);
         getSourceAnnotationsButton.setOnClickListener(this);
         if(!user.isAdmin()){
@@ -77,7 +98,6 @@ public class MonitorFragment extends Fragment implements View.OnClickListener{
             activeMonitorButton.setVisibility(View.VISIBLE);
             getSourceAnnotationsButton.setVisibility(View.VISIBLE);
         }
-
 
         // Inflate the layout for this fragment
         return view;
@@ -129,7 +149,7 @@ public class MonitorFragment extends Fragment implements View.OnClickListener{
             }
             break;
             case R.id.active_monitor_button: {
-
+                beginMonitoring(accessToken);
             }
             break;
             case R.id.get_source_annotations:{
@@ -299,6 +319,32 @@ public class MonitorFragment extends Fragment implements View.OnClickListener{
                     }
                 } else {
 
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                ApplicationUtilities.displayToast(getActivity(), "Server error");
+            }
+        });
+    }
+
+    private void beginMonitoring(String accessToken) {
+        // Authorize the user for monitoring
+        Call<ResponseBody> monitoringAuthRequest = request.getMonitoringAccess(user.getUsername(), accessToken);
+        monitorTextView.setText("");
+        monitoringAuthRequest.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.code() == Request.ACCEPTED) {
+                    ApplicationUtilities.displayToast(getActivity(), "Beginning Monitoring");
+                    Intent startMonitorServiceIntent = new Intent(getActivity(), MonitoringService.class);
+                    startMonitorServiceIntent.setAction(MonitoringService.BEGIN_MONITORING);
+                    startMonitorServiceIntent.putExtra("receiver", monitoringResultReceiver);
+                    getActivity().startService(startMonitorServiceIntent);
+                } else {
+                    ApplicationUtilities.displayToast(getActivity(), "User does not have admin privileges");
                 }
             }
 

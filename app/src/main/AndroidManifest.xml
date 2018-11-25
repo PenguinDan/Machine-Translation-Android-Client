@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".AuthenticationContainer"></activity>
         <activity android:name=".MainActivityContainer"></activity>
+        <service android:name=".Services.MonitoringService"></service>
     </application>
 
 </manifest>

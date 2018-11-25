@@ -110,4 +110,14 @@ interface HTTPInterface {
             @Header("username") username : String,
             @Header("accessToken") accessToken: String
     ) : retrofit2.Call<SourceHashResponse>
+
+    /**
+     * Asks the server for monitoring permissions
+     */
+    @GET("user/monitor")
+    fun getMonitoringAccess(
+            @Header("clientId") clientId: String,
+            @Header("username") username : String,
+            @Header("accessToken") accessToken: String
+    ) : retrofit2.Call<ResponseBody>
 }
