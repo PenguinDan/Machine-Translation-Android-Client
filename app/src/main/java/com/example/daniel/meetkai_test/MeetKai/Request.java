@@ -162,7 +162,7 @@ public class Request {
      *
      * @return A retrieve user annotations request object
      */
-    public Call<UserAnnotationsResponse> retrieveUserAnnotations(final String username, final String accessToken,
+    public Call<ResponseBody> retrieveUserAnnotations(final String username, final String accessToken,
                                                       final String targetUser) {
         // Create the GET request for the user's annotations
         return httpInterface.retrieveUserAnnotations(clientId, username, accessToken, targetUser);
@@ -176,12 +176,25 @@ public class Request {
      * @param hash The hash of the source item to retrieve the annotations for
      * @param phrase The phrase of the source item to retrieve the annotations for
      *
-     * @return The
+     * @return A request object to retrieve source annotations
      */
-    public Call<SourceAnnotationsResponse> retrieveSourceAnnotations(final String username, final String accessToken,
+    public Call<ResponseBody> retrieveSourceAnnotations(final String username, final String accessToken,
                                                                      final String hash, final String phrase) {
         // Create the GET request to get a source's annotations
         return httpInterface.retrieveSourceAnnotations(clientId, username, accessToken, hash, phrase);
+    }
+
+    /**
+     * Retrieves the source hashes
+     *
+     * @param username The user's username
+     * @param accessToken The user's access tokens
+     *
+     * @return A request object to retrieve source hashes
+     */
+    public Call<SourceHashResponse> retrieveSourceHashes(final String username, final String accessToken) {
+        // Create the GET request to get source hashes
+        return httpInterface.retrieveSourceHashes(clientId, username, accessToken);
     }
 
 }

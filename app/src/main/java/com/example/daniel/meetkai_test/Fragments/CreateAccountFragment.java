@@ -12,10 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.daniel.meetkai_test.Interfaces.OnChangeActivityListener;
-import com.example.daniel.meetkai_test.Interfaces.OnChangeFragmentListener;
 import com.example.daniel.meetkai_test.MeetKai.AuthenticationResponse;
 import com.example.daniel.meetkai_test.MeetKai.Request;
-import com.example.daniel.meetkai_test.MeetKai.User;
 import com.example.daniel.meetkai_test.R;
 import com.example.daniel.meetkai_test.Utilities.ApplicationUtilities;
 import com.example.daniel.meetkai_test.Utilities.UserUtilities;

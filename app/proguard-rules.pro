@@ -19,8 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keepclassmembers class android.support.design.internal.BottomNavigationMenuView {
-    boolean mShiftingMode;
-}
--keep class android.support.design.internal.BottomNavigationItemView{ *; }
--keep class android.support.design.internal.BottomNavigationMenuView{ *; }

@@ -243,18 +243,24 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/language_spinner"
-        android:layout_width="315dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/white"
-        android:entries="@array/supported_languages"
+    <RelativeLayout
+        android:id="@+id/spinner_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yandex_translation_text_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/yandex_translation_text_layout" >
+
+        <Spinner
+            android:id="@+id/language_spinner"
+            android:layout_width="315dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/white"
+            android:entries="@array/supported_languages" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/get_phrase_button"
@@ -269,7 +275,7 @@
         android:background="@drawable/rounder_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/language_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_wrapper" />
 
     <Button
         android:id="@+id/send_response_button"

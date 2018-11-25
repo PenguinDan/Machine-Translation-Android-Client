@@ -2,7 +2,6 @@ package com.example.daniel.meetkai_test.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -138,6 +137,7 @@ public class TranslateFragment extends Fragment implements View.OnClickListener{
             case R.id.send_response_button: {
                 sendPhraseAnnotations(accessToken);
             }
+            break;
             case R.id.add_source_button: {
                 createAddSourceDialog(accessToken);
             }

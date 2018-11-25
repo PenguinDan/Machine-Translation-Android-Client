@@ -8,12 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
-
 import com.example.daniel.meetkai_test.Fragments.MonitorFragment;
 import com.example.daniel.meetkai_test.Fragments.SettingsFragment;
 import com.example.daniel.meetkai_test.Fragments.TranslateFragment;
-import com.example.daniel.meetkai_test.Utilities.BottomNavigationBarShiftHelp;
-import com.example.daniel.meetkai_test.Utilities.CountryCodes;
 import com.example.daniel.meetkai_test.Utilities.UserUtilities;
 
 public class MainActivityContainer extends Activity {
@@ -102,8 +99,6 @@ public class MainActivityContainer extends Activity {
      * Creates the bottom navigation for the activity container. Sets the home screen as default.
      */
     private void createBottomNavigationView() {
-        //Disables automatic shifting from the bottom navigation
-        BottomNavigationBarShiftHelp.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.translate);
         bottomNavigationView.setOnNavigationItemSelectedListener(NavItemListen);
         beginFragment(FragmentType.TRANSLATE);

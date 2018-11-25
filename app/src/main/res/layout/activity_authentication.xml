@@ -45,19 +45,12 @@
 
         </RelativeLayout>
 
-        <ScrollView
+        <FrameLayout
+            android:id="@+id/auth_display_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1">
-            <FrameLayout
-                android:id="@+id/main_display_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
 
-            </FrameLayout>
-
-        </ScrollView>
-
+        </FrameLayout>
     </LinearLayout>
 </FrameLayout>

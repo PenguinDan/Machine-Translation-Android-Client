@@ -2,7 +2,6 @@ package com.example.daniel.meetkai_test.MeetKai
 
 import okhttp3.ResponseBody
 import retrofit2.http.*
-import javax.xml.transform.Source
 
 interface HTTPInterface {
     /**
@@ -87,7 +86,7 @@ interface HTTPInterface {
             @Header("username") username : String,
             @Header("accessToken") accessToken: String,
             @Header("targetUser") targetUser : String?
-    ) : retrofit2.Call<UserAnnotationsResponse>
+    ) : retrofit2.Call<ResponseBody>
 
 
     /**
@@ -100,5 +99,15 @@ interface HTTPInterface {
             @Header("accessToken") accessToken : String,
             @Header("hash") hash : String?,
             @Header("phrase") phrase : String?
-    ) :retrofit2.Call<SourceAnnotationsResponse>
+    ) :retrofit2.Call<ResponseBody>
+
+    /**
+     * Retrieves 50 source hash
+     */
+    @GET("phrase/hashes")
+    fun retrieveSourceHashes(
+            @Header("clientId") clientId: String,
+            @Header("username") username : String,
+            @Header("accessToken") accessToken: String
+    ) : retrofit2.Call<SourceHashResponse>
 }

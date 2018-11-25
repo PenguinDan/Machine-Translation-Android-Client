@@ -2,14 +2,12 @@ package com.example.daniel.meetkai_test;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.daniel.meetkai_test.Fragments.CreateAccountFragment;
 import com.example.daniel.meetkai_test.Fragments.LoginFragment;
@@ -89,12 +87,12 @@ public class AuthenticationContainer extends AppCompatActivity implements OnChan
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         switch (fragmentType) {
             case LOGIN:
-                fragmentTransaction.replace(R.id.main_display_container, loginFragment);
+                fragmentTransaction.replace(R.id.auth_display_container, loginFragment);
                 break;
             case CREATE_ACCOUNT:
                 toolbar.setVisibility(View.VISIBLE);
                 createAccountButton.setVisibility(View.VISIBLE);
-                fragmentTransaction.replace(R.id.main_display_container, createAccountFragment);
+                fragmentTransaction.replace(R.id.auth_display_container, createAccountFragment);
                 break;
         }
         if(addToBackStack) {
