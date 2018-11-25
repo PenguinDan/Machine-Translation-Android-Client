@@ -131,6 +131,26 @@ public class Request {
         return httpInterface.renewToken(clientId, username, refreshToken);
     }
 
+    /**
+     * Allows the user to annotate a phrase
+     * @param username The user's username
+     * @param accessToken The user's access token
+     * @param phraseHash The hash of the phrase they are annotating
+     * @param languageAbr The language abbreviation of the language they abbreviated
+     * @param isAzureCorrect If the azure translation was correct
+     * @param isGoogleCorrect If the google translation was correct
+     * @param isYandexCorrect If the yandex translation was correct
+     *
+     * @return A annotate phrase request object
+     */
+    public Call<ResponseBody> annotatePhrase(final String username, final String accessToken,
+                                             final String phraseHash, final String languageAbr,
+                                             final boolean isAzureCorrect, final boolean isGoogleCorrect,
+                                             final boolean isYandexCorrect) {
+        // Create the PUT request to annotate a phrase
+        return httpInterface.annotatePhrase(clientId, username, accessToken, phraseHash, languageAbr,
+                isAzureCorrect, isGoogleCorrect, isYandexCorrect);
+    }
 
     /**
      * Allows the user to retrieve their annotations

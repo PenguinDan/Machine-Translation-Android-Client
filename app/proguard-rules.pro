@@ -22,3 +22,5 @@
 -keepclassmembers class android.support.design.internal.BottomNavigationMenuView {
     boolean mShiftingMode;
 }
+-keep class android.support.design.internal.BottomNavigationItemView{ *; }
+-keep class android.support.design.internal.BottomNavigationMenuView{ *; }

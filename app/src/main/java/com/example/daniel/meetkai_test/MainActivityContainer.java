@@ -2,6 +2,7 @@ package com.example.daniel.meetkai_test;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +13,8 @@ import com.example.daniel.meetkai_test.Fragments.MonitorFragment;
 import com.example.daniel.meetkai_test.Fragments.SettingsFragment;
 import com.example.daniel.meetkai_test.Fragments.TranslateFragment;
 import com.example.daniel.meetkai_test.Utilities.BottomNavigationBarShiftHelp;
+import com.example.daniel.meetkai_test.Utilities.CountryCodes;
+import com.example.daniel.meetkai_test.Utilities.UserUtilities;
 
 public class MainActivityContainer extends Activity {
     // Fragments
@@ -104,5 +107,14 @@ public class MainActivityContainer extends Activity {
         bottomNavigationView.setSelectedItemId(R.id.translate);
         bottomNavigationView.setOnNavigationItemSelectedListener(NavItemListen);
         beginFragment(FragmentType.TRANSLATE);
+    }
+
+    /**
+     * Logs the user out and clears the system's cached information
+     */
+    public void logUserOut() {
+        UserUtilities.clearUserCache(this);
+        startActivity(new Intent(this, AuthenticationContainer.class));
+        finish();
     }
 }

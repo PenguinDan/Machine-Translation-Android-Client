@@ -26,6 +26,7 @@
     <string name="correct_button">Correct</string>
     <string name="incorrect_button">Incorrect</string>
     <string name="add_source_button">Add Source</string>
+    <string name="get_phrase_button">Get New Phrase</string>
     <string-array name="supported_languages">
         <item>Afrikaans</item>
         <item>Arabic</item>
@@ -44,7 +45,7 @@
         <item>Haitian Creole</item>
         <item>Hindi</item>
         <item>Hungarian</item>
-        <item>Icelanding</item>
+        <item>Icelandian</item>
         <item>Indonesian</item>
         <item>Italian</item>
         <item>Japanese</item>
@@ -71,4 +72,8 @@
         <item>Vietnamese</item>
         <item>Welsh</item>
     </string-array>
+
+    <!-- Strings for Settings Fragment -->
+    <string name="log_out_button">Log Out Button</string>
+
 </resources>
