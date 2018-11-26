@@ -11,8 +11,8 @@ MeetKai-Client is my attempt at creating a Client Side Android proof of concept 
 3 Hours Server and Client End-to-End Testing <br>
 4 Hours Documentation and Report <br>
 
-2. [Installation](#installation)
-git clone https://github.com/PenguinDan/MeetKai-Test-Client.git
+## Installation
+git clone https://github.com/PenguinDan/MeetKai-Test-Client.git <br>
 Open on Android Studio to launch
 
 ## Images
